@@ -20,7 +20,7 @@ export class AuthService {
 
   constructor(private readonly jwtService: JwtService) {}
 
-  async validateUser(email: string, password: string) {
+  validateUser(email: string, password: string) {
     const user = this.users.find((u) => u.email === email);
 
     // In real life: compare hash with bcrypt.compare(...)

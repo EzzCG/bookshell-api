@@ -19,7 +19,7 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('me')
   // async me(@Req() req: any) {
-  async me(@CurrentUser() user: any) {
+  me(@CurrentUser() user: any) {
     //now currentUser can take parameters @CurrentUser('email')
     return user; // set by JwtStrate       gy.validate()
     // return req.user; // set by JwtStrate       gy.validate()
