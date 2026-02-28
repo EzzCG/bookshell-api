@@ -1,20 +1,11 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
-
-type Book = { id: string; title: string; author: string; year?: number };
+import { Book, Books } from './models/book';
 
 @Injectable()
 export class BooksService {
-  private books: Book[] = [
-    { id: '1', title: 'Clean Code', author: 'Robert C. Martin', year: 2008 },
-    {
-      id: '2',
-      title: 'The Pragmatic Programmer',
-      author: 'Andrew Hunt',
-      year: 1999,
-    },
-  ];
+  private books: Book[] = Books;
 
   list(q?: string) {
     if (!q) return this.books;
@@ -35,8 +26,8 @@ export class BooksService {
     const id = String(Date.now());
     const book: Book = {
       id,
-      title: dto.title!,
-      author: dto.author!,
+      title: dto.title,
+      author: dto.author,
       year: dto.year,
     };
     this.books.push(book);
