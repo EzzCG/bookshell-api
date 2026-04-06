@@ -7,12 +7,12 @@ import {
   Param,
   Body,
   Query,
-  UseGuards,
+  // UseGuards,
 } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+// import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 // @UseGuards(JwtAuthGuard)
 @Controller('books')
