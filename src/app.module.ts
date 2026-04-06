@@ -4,9 +4,16 @@ import { AppService } from './app.service';
 import { LoggerMiddleware } from './logger.middleware';
 import { BooksModule } from './books/books.module';
 import { AuthModule } from './auth/auth.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [BooksModule, AuthModule],
+  imports: [
+    BooksModule,
+    AuthModule,
+    MongooseModule.forRoot(
+      process.env.MONGO_URI || 'mongodb://mongo:27017/bookshell',
+    ),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
