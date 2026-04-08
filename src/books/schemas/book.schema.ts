@@ -3,7 +3,7 @@ import { HydratedDocument } from 'mongoose';
 
 export type BookDocument = HydratedDocument<BookModel>;
 
-@Schema({ timestamps: true })
+@Schema({ timestamps: true, collection: 'books' })
 export class BookModel {
   @Prop({ required: true })
   title!: string;
@@ -19,3 +19,4 @@ export class BookModel {
 }
 
 export const BookSchema = SchemaFactory.createForClass(BookModel);
+BookSchema.index({ title: 1, author: 1 });

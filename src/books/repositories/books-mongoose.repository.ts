@@ -19,18 +19,18 @@ export class MongooseBooksRepository implements BooksRepository {
     const filter = q
       ? {
           $or: [
-            { title: { $regex: q, $options: 'i' } },
-            { author: { $regex: q, $options: 'i' } },
+            { title: { $regex: `^${q}`, $options: 'i' } },
+            { author: { $regex: `^${q}`, $options: 'i' } },
           ],
         }
       : {};
 
-    const docs = await this.bookModel.find(filter).exec();
+    const docs = await this.bookModel.find(filter).lean().exec();
     return docs.map((doc) => this.toDomain(doc));
   }
 
   async findById(id: string): Promise<Book | null> {
-    const doc = await this.bookModel.findById(id).exec();
+    const doc = await this.bookModel.findById(id).lean().exec();
     return doc ? this.toDomain(doc) : null;
   }
 
