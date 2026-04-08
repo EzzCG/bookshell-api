@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Book, Books } from '../domain/book';
+import { Book } from '../domain/book';
 import { CreateBookDto } from '../dto/create-book.dto';
 import { UpdateBookDto } from '../dto/update-book.dto';
 import { BooksRepository } from '../domain/books.repository';
@@ -13,7 +13,6 @@ export class MongooseBooksRepository implements BooksRepository {
     @InjectModel(BookModel.name)
     private readonly bookModel: Model<BookDocument>,
   ) {}
-  private books = Books;
 
   async findAll(q?: string): Promise<Book[]> {
     const filter = q

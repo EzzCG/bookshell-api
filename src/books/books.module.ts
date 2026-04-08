@@ -4,6 +4,7 @@ import { BooksService } from './books.service';
 import { MongooseBooksRepository } from './repositories/books-mongoose.repository';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BookModel, BookSchema } from './schemas/book.schema';
+import { TypeOrmBooksRepository } from './repositories/books-typeOrm.repository';
 
 @Module({
   imports: [
@@ -13,9 +14,14 @@ import { BookModel, BookSchema } from './schemas/book.schema';
   providers: [
     BooksService,
     MongooseBooksRepository,
+    TypeOrmBooksRepository,
+    // {
+    //   provide: 'BOOKS_REPOSITORY',
+    //   useClass: MongooseBooksRepository,
+    // },
     {
       provide: 'BOOKS_REPOSITORY',
-      useClass: MongooseBooksRepository,
+      useClass: TypeOrmBooksRepository,
     },
   ],
 })
