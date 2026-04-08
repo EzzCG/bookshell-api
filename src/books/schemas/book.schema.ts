@@ -13,6 +13,9 @@ export class BookModel {
 
   @Prop()
   year?: number;
+
+  @Prop()
+  imageUrl?: string;
 }
 
 export const BookSchema = SchemaFactory.createForClass(BookModel);

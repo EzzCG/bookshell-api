@@ -58,6 +58,7 @@ export class MongooseBooksRepository implements BooksRepository {
       title: doc.title,
       author: doc.author,
       year: doc.year,
+      imageUrl: doc.imageUrl,
     };
   }
 }
