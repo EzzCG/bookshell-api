@@ -7,12 +7,12 @@ import {
   Param,
   Body,
   Query,
-  UseGuards,
+  // UseGuards,
 } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+// import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 // @UseGuards(JwtAuthGuard)
 @Controller('books')
@@ -20,14 +20,14 @@ export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
   @Get()
-  list(@Query('q') q?: string) {
+  findAll(@Query('q') q?: string) {
     // Optional search via ?q= query parameter
-    return this.booksService.list(q);
+    return this.booksService.findAll(q);
   }
 
   @Get(':id')
-  getOne(@Param('id') id: string) {
-    return this.booksService.getOne(id);
+  findById(@Param('id') id: string) {
+    return this.booksService.findById(id);
   }
 
   @Post()

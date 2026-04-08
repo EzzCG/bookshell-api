@@ -1,4 +1,11 @@
-export type Book = { id: string; title: string; author: string; year?: number };
+export interface Book {
+  id: string;
+  title: string;
+  author: string;
+  year?: number;
+  imageUrl?: string;
+}
+
 export const Books: Book[] = [
   { id: '1', title: 'Clean Code', author: 'Robert C. Martin', year: 2008 },
   {
