@@ -5,10 +5,13 @@ import { MongooseBooksRepository } from './repositories/books-mongoose.repositor
 import { MongooseModule } from '@nestjs/mongoose';
 import { BookModel, BookSchema } from './schemas/book.schema';
 import { TypeOrmBooksRepository } from './repositories/books-typeOrm.repository';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { BookEntity } from './entities/book.entity';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: BookModel.name, schema: BookSchema }]),
+    TypeOrmModule.forFeature([BookEntity]),
   ],
   controllers: [BooksController],
   providers: [

@@ -17,11 +17,11 @@ import { BookEntity } from './books/entities/book.entity';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'admin',
+      username: 'postgres',
       password: 'admin',
       database: 'books_db',
       entities: [BookEntity],
-      synchronize: true, // only for local dev
+      synchronize: false, // only for local dev
     }),
   ],
   controllers: [AppController],
