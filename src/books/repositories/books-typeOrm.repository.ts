@@ -45,8 +45,10 @@ export class TypeOrmBooksRepository implements BooksRepository {
     const book = await this.bookRepository.findOne({ where: { id } });
     if (!book) return null;
 
+    const deletedBook = this.toDomain(book); // save first
     await this.bookRepository.remove(book);
-    return this.toDomain(book);
+
+    return deletedBook;
   }
 
   private toDomain(book: BookEntity): Book {
