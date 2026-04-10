@@ -7,6 +7,7 @@ import { BookModel, BookSchema } from './schemas/book.schema';
 import { TypeOrmBooksRepository } from './repositories/books-typeOrm.repository';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BookEntity } from './entities/book.entity';
+import { BooksResolver } from './book.resolver';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { BookEntity } from './entities/book.entity';
   controllers: [BooksController],
   providers: [
     BooksService,
+    BooksResolver,
     MongooseBooksRepository,
     TypeOrmBooksRepository,
     // {
